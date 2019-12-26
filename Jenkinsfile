@@ -4,6 +4,10 @@ pipeline {
         DOCKER_IMAGE_TAG = "my-app:build-${env.BUILD_ID}"
     }
     stages {
+        stage('Initialize'){
+            def dockerHome = tool 'myDocker'
+            env.PATH = "${dockerHome}/bin:${env.PATH}"
+        }
         stage('Build') {
             steps {
                 script {
