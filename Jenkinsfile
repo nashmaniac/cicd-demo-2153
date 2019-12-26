@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+        DOCKER_IMAGE_TAG = "my-app:build-${env.BUILD_ID}"
+    }
     stages {
         stage('Build') {
             steps {
